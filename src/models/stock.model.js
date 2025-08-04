@@ -2,24 +2,30 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
 const Stock = sequelize.define('Stock', {
-  name: {
+  stock_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  stock_name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  purchase_price: {
-    type: DataTypes.FLOAT,
-    allowNull: false
+  stock_sector: {
+    type: DataTypes.STRING,
+    allowNull: true
   },
   current_price: {
     type: DataTypes.FLOAT,
     allowNull: false
   },
-  sector: {
-    type: DataTypes.STRING,
-    allowNull: true
+  is_wishlisted: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 }, {
-  timestamps: false   // ✅ This disables createdAt and updatedAt
+  tableName: 'stock',   // Match your DB table name
+  timestamps: false     // Disable createdAt and updatedAt if not present
 });
 
 module.exports = Stock;
