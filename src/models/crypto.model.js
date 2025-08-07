@@ -1,20 +1,15 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
-
-const Stock = sequelize.define('Stock', {
-  stock_id: {
+const Crypto = sequelize.define('Crypto', {
+  crypto_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  stock_name: {
+  crypto_name: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  stock_sector: {
-    type: DataTypes.STRING,
-    allowNull: true
   },
   current_price: {
     type: DataTypes.FLOAT,
@@ -25,10 +20,8 @@ const Stock = sequelize.define('Stock', {
     defaultValue: false
   }
 }, {
-  tableName: 'stock',   // Match your DB table name
-  timestamps: false     // Disable createdAt and updatedAt if not present
+  tableName: 'crypto',   // Match your DB table name
+  timestamps: false      // Disable createdAt and updatedAt if not present
 });
 
-
-
-module.exports = Stock;
+module.exports = Crypto;

@@ -141,3 +141,38 @@ exports.getCurrentPortfolioValue = async (req, res) => {
     res.status(500).json({ message: 'Error calculating portfolio value', error: err.message });
   }
 };
+
+// 8. Get all purchased stocks
+// exports.getAllPurchasedStocks = async (req, res) => {
+//   try {
+//     const purchasedStocks = await PurchasedStock.findAll();
+//     res.json(purchasedStocks);
+//   } catch (err) {
+//     res.status(500).json({ message: 'Error fetching purchased stocks', error: err.message });
+//   }
+// };
+
+exports.getAllPurchasedStocks = async (req, res) => {
+  try {
+    const purchasedStocks = await PurchasedStock.findAll({
+      include: [
+        {
+          model: Stock,
+          attributes: ['stock_id', 'stock_name', 'stock_sector', 'current_price'] // choose what to include
+        }
+      ]
+    });
+
+    res.status(200).json(purchasedStocks);
+  } catch (err) {
+    console.error('Error fetching purchased stocks:', err);
+    res.status(500).json({ message: 'Error fetching purchased stocks', error: err.message });
+  }
+  
+};
+
+exports.hello = async (req, res) => {
+  res.status(200).json({message : "hello"});
+}
+
+

@@ -12,4 +12,9 @@ router.post('/sell-stock', stockController.sellStock);
 router.get('/analytics/invested-amount', stockController.getInvestedAmount);
 router.get('/analytics/current-value', stockController.getCurrentPortfolioValue);
 
+router.get('/purchased-stocks/all', stockController.getAllPurchasedStocks);
+router.get('/hello/abc', stockController.hello);
+
+
+
 module.exports = router;
