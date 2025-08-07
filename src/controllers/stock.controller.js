@@ -1,8 +1,4 @@
-const Stock = require('../models/stock.model');
-const PurchasedStock = require('../models/purchased_stock.model');
-const Transaction = require('../models/transaction.model');
-const { Op } = require('sequelize');
-
+const {Stock, PurchasedStock, Transaction} = require('../models');
 // 1. List all stocks
 exports.getAllStocks = async (req, res) => {
   try {

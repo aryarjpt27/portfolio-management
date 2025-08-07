@@ -1,7 +1,4 @@
-const RealEstate = require('../models/realEstate.model');
-const RealEstateTransaction = require('../models/RealEstateTransaction.model');
-const PurchasedRealEstate = require('../models/PurchasedRealEstate.model');
-
+const {RealEstate, RealEstateTransaction, PurchasedRealEstate } = require('../models');
 // 1. Add a new property
 exports.addProperty = async (req, res) => {
   try {

@@ -16,7 +16,10 @@
     "mysql2": "^3.14.3",
     "sequelize": "^6.37.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aryarjpt27/portfolio-management.git"
