@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const Stock = require('./stock.model');
+const Crypto = require('./crypto.model'); // import the Crypto model
 
-const PurchasedStock = sequelize.define('PurchasedStock', {
+const PurchasedCrypto = sequelize.define('PurchasedCrypto', {
   purchased_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -20,18 +20,18 @@ const PurchasedStock = sequelize.define('PurchasedStock', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  stock_id: {
+  crypto_id: {
     type: DataTypes.INTEGER,
     allowNull: false
   }
 }, {
-  tableName: 'purchased_stock', // This ensures Sequelize uses your exact table name
-  timestamps: false             // Skip createdAt/updatedAt if not in table
+  tableName: 'purchased_crypto', // custom table name
+  timestamps: false              // skip createdAt and updatedAt
 });
 
-PurchasedStock.belongsTo(Stock, {
-  foreignKey: 'stock_id'
+// Define the association with the Crypto model
+PurchasedCrypto.belongsTo(Crypto, {
+  foreignKey: 'crypto_id'
 });
 
-
-module.exports = PurchasedStock;
+module.exports = PurchasedCrypto;
