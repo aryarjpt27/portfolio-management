@@ -28,7 +28,7 @@ const Transaction = sequelize.define('Transaction', {
     allowNull: false
   }
 }, {
-  tableName: 'transactions',
+  tableName: 'stock_transactions',
   timestamps: false
 });
 

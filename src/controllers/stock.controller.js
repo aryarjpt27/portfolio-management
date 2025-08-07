@@ -38,8 +38,6 @@ exports.buyStock = async (req, res) => {
       purchase_price,
       quantity
     });
-
-    
     await Transaction.create({
       type_of_transaction: 'BUY',
       transaction_date: purchase_date,
@@ -113,7 +111,7 @@ exports.getStockInfo = async (req, res) => {
   }
 };
 
-// 6. Get total invested amount
+// 6. Get total stock invested amount
 exports.getInvestedAmount = async (req, res) => {
   try {
     const purchases = await PurchasedStock.findAll();
@@ -122,11 +120,11 @@ exports.getInvestedAmount = async (req, res) => {
     );
     res.json({ invested_amount: totalInvested });
   } catch (err) {
-    res.status(500).json({ message: 'Error calculating invested amount', error: err.message });
+    res.status(500).json({ message: 'Error calculating stock invested amount', error: err.message });
   }
 };
 
-// 7. Get current portfolio value
+// 7. Get current stock portfolio value
 exports.getCurrentPortfolioValue = async (req, res) => {
   try {
     const purchases = await PurchasedStock.findAll({ include: Stock });
@@ -138,6 +136,6 @@ exports.getCurrentPortfolioValue = async (req, res) => {
 
     res.json({ portfolio_value: totalValue });
   } catch (err) {
-    res.status(500).json({ message: 'Error calculating portfolio value', error: err.message });
+    res.status(500).json({ message: 'Error calculating stock portfolio value', error: err.message });
   }
 };
